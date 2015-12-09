@@ -1,0 +1,633 @@
+\documentclass[a4papper, 11pt]{article}
+
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+ \usepackage[normalem]{ulem}
+ %\usepackage[french]{babel}
+ \usepackage{graphicx}
+ \usepackage{caption}
+ \usepackage{subcaption}
+ \usepackage{enumerate}
+ \usepackage{array}
+ \usepackage{amsmath,amssymb,mathrsfs}
+ \usepackage{url}
+ \usepackage{fullpage}
+ \usepackage[table]{xcolor}
+ \usepackage{placeins} 
+ 
+ \definecolor{light-gray}{gray}{0.85}
+ %\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+ \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % To center text in table
+ \title{PLUME Lab test : Summary of tests on CM01}
+\author{Benjamin \textsc{Boitrelle}}
+ \date{March 2015}
+
+ \begin{document}
+
+    \maketitle
+    \tableofcontents
+%-------------
+%   Alignment of sensors
+    %\newpage
+    %\section{Survey of the alignment of sensors on the PCB}
+
+    %\begin{figure}[!h]
+    %    \centering
+    %    \begin{subfigure}{8cm}
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image01.jpg}
+    %        \caption{Bottom view (closed to the bondings)}
+    %    \end{subfigure}
+    %    \begin{subfigure}{8cm}        
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image02.jpg}
+    %        \caption{Top view}
+    %    \end{subfigure}
+    %    \caption{Between chip 1 and 2}
+    %    \label{chip1-2}
+    %\end{figure}
+    %\FloatBarrier 
+
+    %There is a gap of $\simeq 20 \mu$m between the two sensor (see figure \ref{chip1-2}). The left sensor (chip 1) is $\simeq 40 \mu$m higher than the right one (chip 2).
+
+    %\begin{figure}[!h]
+    %    \centering
+    %    \begin{subfigure}{8cm}
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image03.jpg}
+    %        \caption{Bottom view (closed to the bondings)}
+    %    \end{subfigure}
+    %    \begin{subfigure}{8cm}        
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image04.jpg}
+    %        \caption{Top view}
+    %    \end{subfigure}
+    %    \caption{Between chip 2 and 3}
+    %    \label{chip2-3}
+    %\end{figure}
+    %\FloatBarrier 
+    %
+    %On the bottom of the matrices, there is a gap of $\simeq 29.2 \mu$m between the two sensor but on the top of the matrices, they seem closer (see figure \ref{chip2-3}).
+
+    %\begin{figure}[!h]
+    %    \centering
+    %    \begin{subfigure}{8cm}
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image05.jpg}
+    %        \caption{Bottom view (closed to the bondings)}
+    %    \end{subfigure}
+    %    \begin{subfigure}{8cm}        
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image06.jpg}
+    %        \caption{Top view}
+    %    \end{subfigure}
+    %    \caption{Between chip 3 and 4}
+    %    \label{chip3-4}
+    %\end{figure}
+    %\FloatBarrier 
+
+    %There is a gap of $\simeq 31 \mu$m between the two sensor (see figure \ref{chip3-4}). 
+
+    %\begin{figure}[!h]
+    %    \centering
+    %    \begin{subfigure}{8cm}
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image07.jpg}
+    %        \caption{Bottom view (closed to the bondings)}
+    %    \end{subfigure}
+    %    \begin{subfigure}{8cm}        
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image08.jpg}
+    %        \caption{Top view}
+    %    \end{subfigure}
+    %    \caption{Between chip 4 and 5}
+    %    \label{chip4-5}
+    %\end{figure}
+    %\FloatBarrier 
+
+    %\begin{figure}[!h]
+    %    \centering
+    %    \begin{subfigure}{8cm}
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image09.jpg}
+    %        \caption{Bottom view (closed to the bondings)}
+    %    \end{subfigure}
+    %    \begin{subfigure}{8cm}        
+    %        \includegraphics[width = 8cm]{../Pictures_PLUME/aluminum_module_07_10_2014/image10.jpg}
+    %        \caption{Top view}
+    %    \end{subfigure}
+    %    \caption{Between chip 5 and 6}
+    %    \label{chip5-6}
+    %\end{figure}
+    %\FloatBarrier 
+
+    %On the bottom of the matrices, there is a gap of $\simeq 51 \mu$m between the two sensor but the two sensors are closer on the top of the matrices (see figure \ref{chip5-6}).
+    %
+    %\clearpage
+
+%-------------
+%   Characterization of module
+
+    \section{Characterization of the module}
+
+  %-------------
+  %    SMOKE TEST
+      
+      \subsection{Smoke test}
+        
+        \begin{itemize}
+          \item Power On : 40 mA;
+          \item RESET : 40 mA;
+          \item ALL : 790 mA;
+          \item READ : 790 mA, no error;
+          \item START : 1205 mA.
+        \end{itemize}
+
+  %-------------
+  %    Oscilloscope visualisation
+      
+      \subsection{Oscilloscope Output}
+
+        \begin{itemize}
+            \item \textbf{Chip 1} : RESET and JTAG are working, able to control Header and Trailer and no dead pixel when threshold is fixed to 255;
+            \item \textbf{Chip 2} : RESET and JTAG are working, able to control Header and Trailer and no dead pixel when threshold is fixed to 255;
+            \item \textbf{Chip 3} : RESET and JTAG are working, able to control Header and Trailer and no dead pixel when threshold is fixed to 255;
+            \item \textbf{Chip 4} : RESET and JTAG are working, able to control Header and Trailer and no dead pixel when threshold is fixed to 255;
+            \item \textbf{Chip 5} : This chip is not working because the sensor was disconnected from VCLP at Strasbourg;
+            \item \textbf{Chip 6} : RESET and JTAG are working, able to control Header and Trailer and no dead pixel when threshold is fixed to 255.
+        \end{itemize}
+  %-------------
+  %    Charac SENSOR 1
+      
+      \subsection{Sensor 1}
+
+        \begin{itemize}
+
+          \item Estimation of the "middle points" :
+          \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+              \hline %-------------------------------------------------------------------------------------
+             \rowcolor{light-gray} $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+              100        &        63        &         91       &       91         &        110        \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Discriminators calibration:
+          \begin{center}
+            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+              \hline %-------------------------------------------------------------------
+             \rowcolor{light-gray} $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+              \hline %-------------------------------------------------------------------
+                35  &  63  &  63  & 82  &  100  &  91  &  2  &  500  &  29  \tabularnewline
+              \hline %-------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Temporal noise, fixed pattern noise and offset :
+
+            \begin{center}
+              \begin{tabular}{|c|c|c|c|}
+                \hline %----------------------------
+             \rowcolor{light-gray}     Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+                \hline %----------------------------
+                    A     & 0,857 & 0,506 & 0,612    \tabularnewline
+                \hline %----------------------------
+                    B     & 0,989 & 0,706 & -0,187   \tabularnewline
+                \hline %----------------------------
+                    C     & 0,865 & 0,971 & -0,011    \tabularnewline
+                \hline %----------------------------
+                    D     & 0,366 & 1,204 & 0,059    \tabularnewline
+                \hline %----------------------------
+              \end{tabular}
+            \end{center}
+
+        \end{itemize}
+
+       % \begin{figure}[!h]
+       %     \centering
+       %     \includegraphics[width = 12cm]{../Aluminum_module_straight_characterization2014/Chip1/th255.png}
+       %     \caption{Pixels response when discriminators are closed.}
+       % \end{figure}
+    \FloatBarrier 
+
+  %-------------
+  %    Charac SENSOR 2
+
+      \subsection{Sensor 2}      
+
+        \begin{itemize}
+      
+          \item Estimation of the "middle points" :
+          \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+              \hline %-------------------------------------------------------------------------------------
+           \rowcolor{light-gray}   $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+                100        &        137        &         82       &       165         &        134        \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Discriminators calibration:
+          \begin{center}
+            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+              \hline %-------------------------------------------------------------------
+         \rowcolor{light-gray}     $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+              \hline %-------------------------------------------------------------------
+                109  &  54  &  137  &  106 &  100  &  165  &  2  &  500  &  29  \tabularnewline
+              \hline %-------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Temporal noise, fixed pattern noise and offset :
+
+            \begin{center}
+              \begin{tabular}{|c|c|c|c|}
+                \hline %----------------------------
+         \rowcolor{light-gray}         Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+                \hline %----------------------------
+                    A     & 0,918 & 0,531 & 0,664    \tabularnewline
+                \hline %----------------------------
+                    B     & 1,198 & 0,808 & -0,173   \tabularnewline
+                \hline %----------------------------
+                    C     & 1,223 & 0,783 & -0,302   \tabularnewline
+                \hline %----------------------------
+                    D     & 1,036 & 0,661 & 0,438    \tabularnewline
+                \hline %----------------------------
+              \end{tabular}
+            \end{center}
+        \end{itemize}
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{../Aluminum_module_straight_characterization2014/Chip2/th255.png}
+            \caption{Pixels response when discriminators are closed.}
+        \end{figure}
+    \FloatBarrier 
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{../Aluminum_module_straight_characterization2014/Chip2/th0.png}
+            \caption{Pixels response when discriminators are opened.}
+        \end{figure}
+    \FloatBarrier 
+
+  %-------------
+  %    Charac SENSOR 3
+
+      \subsection{Sensor 3}
+
+        \begin{itemize}
+
+      \item Estimation of the "middle points" :
+          \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+              \hline %-------------------------------------------------------------------------------------
+        \rowcolor{light-gray}      $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+                100        &        193        &         113       &       113         &         63        \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Discriminators calibration:
+          \begin{center}
+            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+              \hline %-------------------------------------------------------------------
+        \rowcolor{light-gray}      $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+              \hline %-------------------------------------------------------------------
+                165  &   85  &   85  &  35 &  100  &  221  &  2  &  500  &  29  \tabularnewline
+              \hline %-------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Temporal noise, fixed pattern noise and offset :
+
+            \begin{center}
+              \begin{tabular}{|c|c|c|c|}
+                \hline %----------------------------
+        \rowcolor{light-gray}          Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+                \hline %----------------------------
+                    A     & 1,073 & 0,472 & 0,531    \tabularnewline
+                \hline %----------------------------
+                    B     & 1,056 & 0,675 & 0,065    \tabularnewline
+                \hline %----------------------------
+                    C     & 1,100 & 0,804 & 0,055    \tabularnewline
+                \hline %----------------------------
+                    D     & 0,930 & 0,717 & 0,401    \tabularnewline
+                \hline %----------------------------
+              \end{tabular}
+            \end{center}
+        \end{itemize}
+
+  %-------------
+  %    Charac SENSOR 4
+
+      \subsection{Sensor 4}
+
+        \begin{itemize}
+
+          \item Estimation of the "middle points" :
+          \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+              \hline %-------------------------------------------------------------------------------------
+       \rowcolor{light-gray}       $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+                100        &        151        &         194       &       160         &         49        \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Discriminators calibration:
+          \begin{center}
+            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+              \hline %-------------------------------------------------------------------
+       \rowcolor{light-gray}       $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+              \hline %-------------------------------------------------------------------
+                123  &  166  &  132  &  21 &  100  &  179  &  2  &  500  &  29  \tabularnewline
+              \hline %-------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Temporal noise, fixed pattern noise and offset :
+
+            \begin{center}
+              \begin{tabular}{|c|c|c|c|}
+                \hline %----------------------------
+       \rowcolor{light-gray}           Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+                \hline %----------------------------
+                    A     & 1,112 & 0,616 & 0,552    \tabularnewline
+                \hline %----------------------------
+                    B     & 1,171 & 0,510 & 0,292    \tabularnewline
+                \hline %----------------------------
+                    C     & 1,101 & 0,511 & 0,796    \tabularnewline
+                \hline %----------------------------
+                    D     & 1,077 & 0,754 & 0,379    \tabularnewline
+                \hline %----------------------------
+              \end{tabular}
+            \end{center}
+        \end{itemize}
+
+%  %-------------
+%  %    Charac SENSOR 5
+%
+%      \subsection{Sensor 5}
+%    
+%        \begin{itemize}
+%    
+%          \item Estimation of the "middle points" :
+%          \begin{center}
+%            \begin{tabular}{|c|c|c|c|c|}
+%              \hline %-------------------------------------------------------------------------------------
+%      \rowcolor{light-gray}        $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+%              \hline %-------------------------------------------------------------------------------------
+%                100        &        159        &          85       &       180         &        145        \tabularnewline
+%              \hline %-------------------------------------------------------------------------------------
+%            \end{tabular}
+%          \end{center}
+%
+%          \item Discriminators calibration:
+%          \begin{center}
+%            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+%              \hline %-------------------------------------------------------------------
+%       \rowcolor{light-gray}       $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+%              \hline %-------------------------------------------------------------------
+%                131  &   57  &  152  & 117 &  100  &  187  &  2  &  500  &  29  \tabularnewline
+%              \hline %-------------------------------------------------------------------
+%            \end{tabular}
+%          \end{center}
+%
+%          \item Temporal noise, fixed pattern noise and offset :
+%
+%            \begin{center}
+%              \begin{tabular}{|c|c|c|c|}
+%                \hline %----------------------------
+%       \rowcolor{light-gray}           Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+%                \hline %----------------------------
+%                    A     & 0,857 & 0,472 & 0,167    \tabularnewline
+%                \hline %----------------------------
+%                    B     & 0,892 & 0,621 & 0,038    \tabularnewline
+%                \hline %----------------------------
+%                    C     & 0,850 & 0,749 & 0,018    \tabularnewline
+%                \hline %----------------------------
+%                    D     & 0,729 & 0,853 & -0,271   \tabularnewline
+%                \hline %----------------------------
+%              \end{tabular}
+%            \end{center}
+%        \end{itemize}
+
+  %-------------
+  %    Charac SENSOR 6
+      \subsection{Sensor 6}
+
+        \begin{itemize}
+      
+          \item Estimation of the "middle points" :
+          \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+              \hline %-------------------------------------------------------------------------------------
+      \rowcolor{light-gray}        $V_{ref_2}$  &   $V_{ref_{1A}}$  &   $V_{ref_{1B}}$  &   $V_{ref_{1C}}$  &   $V_{ref_{1D}}$  \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+                100        &        159        &          85       &       180         &        145        \tabularnewline
+              \hline %-------------------------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Discriminators calibration:
+          \begin{center}
+            \begin{tabular}{|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|M{1.3cm}|}
+              \hline %-------------------------------------------------------------------
+     \rowcolor{light-gray}         $V_{ref1_A}$ START  & $V_{ref1_B}$ START & $V_{ref1_C}$ START & $V_{ref1_D}$ START & $V_{ref2}$ & $V_{ref1_A}$ STOP & Step & Event nb / step & Number of Runs \tabularnewline
+              \hline %-------------------------------------------------------------------
+                131  &   57  &  152  & 117 &  100  &  187  &  2  &  500  &  29  \tabularnewline
+              \hline %-------------------------------------------------------------------
+            \end{tabular}
+          \end{center}
+
+          \item Temporal noise, fixed pattern noise and offset :
+
+            \begin{center}
+              \begin{tabular}{|c|c|c|c|}
+                \hline %----------------------------
+    \rowcolor{light-gray} Matrix  &  TN   &  FPN  &  Offset  \tabularnewline
+                \hline %----------------------------
+                    A     & 0,857 & 0,472 & 0,167    \tabularnewline
+                \hline %----------------------------
+                    B     & 0,892 & 0,621 & 0,038    \tabularnewline
+                \hline %----------------------------
+                    C     & 0,850 & 0,749 & 0,018    \tabularnewline
+                \hline %----------------------------
+                    D     & 0,729 & 0,853 & -0,271   \tabularnewline
+                \hline %----------------------------
+              \end{tabular}
+            \end{center}
+        \end{itemize}
+    
+    \newpage
+    \section{Test of the module in acquisition mode}
+
+        \subsection{Sensor 1}
+
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|}
+                  \hline %-----------------------------------------------------------------
+\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                      7039      &       3       &   1.02387 $10^{-6}$ &  5.5674  $10^{-10}$ \tabularnewline   
+                  \hline %-----------------------------------------------------------------
+                      7040      &       4       &   4.56894 $10^{-7}$ &  3.71095 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                      7041      &       5       &   9.79863 $10^{-8}$ &  1.71854 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                      7042      &       6       &   5.24149 $10^{-10}$ &  1.25691 $10^{-11}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                      7043      &       7       &   7.47492 $10^{-11}$ &  4.74658 $10^{-12}$ \tabularnewline                 
+                  \hline %-----------------------------------------------------------------
+                      7045      &       8       &   6.97371 $10^{-8}$ &  1.4498 $10^{-10}$ \tabularnewline 
+                  \hline %-----------------------------------------------------------------
+                \end{tabular}
+            \end{center}
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor1.png}
+            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+        \end{figure}
+    \FloatBarrier 
+            
+        \subsection{Sensor 2}
+
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|}
+                  \hline %-----------------------------------------------------------------
+\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7039    &       3       &  1.0808 $10^{-4}$ & 1.27625 $10^{-8}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7040    &       4       &  7.39328 $10^{-5}$ & 1.05556 $10^{-8}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7041    &       5       &  6.01577 $10^{-5}$ & 9.52156 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7042    &       6       &  6.01577 $10^{-5}$ & 9.52156 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7043    &       7       &  5.954 $10^{-5}$  & 9.47279 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7044    &       8       & 5.9325 $10^{-5}$  & 9.45543 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                \end{tabular}
+            \end{center}
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor2.png}
+            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+        \end{figure}
+    \FloatBarrier 
+
+        The average fake hit rate is dominated by the dead line and few pixels dead in one column. 
+
+        \subsection{Sensor 3}
+        
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|}
+                  \hline %-----------------------------------------------------------------
+\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7006    &       3       &  1.63559 $10^{-5}$  & 4.96477 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7009    &       4       &  7.15763 $10^{-6}$  & 3.28433 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7003    &       5       &  1.73221 $10^{-6}$  & 1.61571 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7012    &       6       &  3.3916 $10^{-7}$  & 7.14932 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7015    &       7       &  6.50288 $10^{-8}$  & 3.13051 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7018    &       8       &  7.52164 $10^{-9}$  & 1.06468 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                \end{tabular}
+            \end{center}
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor3.png}
+            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+        \end{figure}
+    \FloatBarrier 
+
+        \subsection{Sensor 4}
+
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|}
+                  \hline %-----------------------------------------------------------------
+\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7006    &       3       &  2.13599 $10^{-5}$  & 5.67364 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7009    &       4       &  1.14268 $10^{-5}$  & 4.14977 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7003    &       5       &  4.14364 $10^{-6}$  & 2.49893 $10^{-9}$ \tabularnewline
+                 \hline %-----------------------------------------------------------------
+                        7012    &       6       &  8.91421 $10^{-7}$  & 1.15905 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7015    &       7       &  2.23366 $10^{-7}$  & 5.80191 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7018    &       8       &  4.96962 $10^{-8}$  & 2.73668 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                \end{tabular}
+            \end{center}
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor4.png}
+            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+        \end{figure}
+    \FloatBarrier 
+
+%        \subsection{Sensor 5}
+%
+%            \begin{center}
+%                \begin{tabular}{|c|c|c|c|}
+%                  \hline %-----------------------------------------------------------------
+%\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7007    &       3       &  1.66288 $10^{-5}$  & 5.00603 $10^{-9}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7010    &       4       &  1.19031 $10^{-5}$  & 4.23539 $10^{-9}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7004    &       5       &  3.45914 $10^{-6}$  & 2.28321 $10^{-9}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7013    &       6       &  9.07519 $10^{-7}$  & 1.16947 $10^{-9}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7016    &       7       &  3.2517 $10^{-7}$   & 7.00031 $10^{-10}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                        7019    &       8       &  7.06847 $10^{-8}$  & 3.26381 $10^{-10}$ \tabularnewline
+%                  \hline %-----------------------------------------------------------------
+%                \end{tabular}
+%            \end{center}
+%        \begin{figure}[!h]
+%            \centering
+%            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor5.png}
+%            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+%        \end{figure}
+%    \FloatBarrier 
+
+        \subsection{Sensor 6}
+        
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|}
+                  \hline %-----------------------------------------------------------------
+\rowcolor{light-gray}  Run Number  &   Threshold   &   Average Fake Rate    &   Uncertainty from Poisson         \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7007    &       3       &  1.41348 $10^{-5}$  & 4.61538 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7010    &       4       &  6.8833 $10^{-6}$  & 3.22078 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7004    &       5       &  1.13499 $10^{-6}$  & 1.30785 $10^{-9}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7013    &       6       &  2.92517 $10^{-7}$  & 6.63954 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7016    &       7       &  3.46665 $10^{-8}$  & 2.28569 $10^{-10}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                        7019    &       8       &  2.31029 $10^{-9}$  & 5.9006 $10^{-11}$ \tabularnewline
+                  \hline %-----------------------------------------------------------------
+                \end{tabular}
+            \end{center}
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width = 12cm]{Fake_results_CM01/Output_Fake_results_CM01/Fake_results_CM01_sensor6.png}
+            \caption{Average Fake Hit Rate per pixel per event as a function of the Threshold.}
+        \end{figure}
+    \FloatBarrier 
+
+\end{document}
