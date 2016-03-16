@@ -1,0 +1,10 @@
+# Do not take into account swap files
+*.swp
+
+# Do not take into account files created by latex (except the pdf file)
+*.aux
+*.log
+*.toc 
+
+# Do not add this folder (for the moment)
+Fake_results_CM01/

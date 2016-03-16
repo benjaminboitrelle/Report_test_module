@@ -1,0 +1,74 @@
+\documentclass[a4papper, 10pt]{article}
+
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+ \usepackage[normalem]{ulem}
+ \usepackage[british]{babel}
+ \usepackage{graphicx}
+ \usepackage{caption}
+ \usepackage{subcaption}
+ \usepackage{enumerate}
+ \usepackage{array}
+ \usepackage{amsmath,amssymb,mathrsfs}
+ \usepackage{url}
+ \usepackage{fullpage}
+ \usepackage[table]{xcolor}
+ \usepackage{placeins} 
+ 
+ \definecolor{light-gray}{gray}{0.85}
+ %\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+ \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % To center text in table
+
+ \title{Report: OKF7 electrical validation}
+ \author{Benjamin Boitrelle}
+ \date{March 2016}
+
+ \begin{document}
+
+    \maketitle
+    
+    %tableofcontents
+
+  %\section{Alignment and bounding inspection}:
+  \section{Electrical tests}
+    \subsection{Auxiliary board}
+    
+   Some parameters of the auxiliary board are measured (without any module connected).
+   \begin{itemize}
+     \item Consumption: 343 mA
+     \item $V_{clp} \ = \ 2.28 \ V$
+     \item $V_{DD_D} \ = \ 3.35 \ V$
+     \item $V_{DD_A} \ = \ 3.35 \ V$
+   \end{itemize}
+
+     \subsection{AM03 smoke test}
+
+    First smoke test done without changing the value of  $V_{clp}$, $V_{dd_D}$ of $V_{dd_A}$:
+     \begin{itemize}
+       \item POWER ON: 608 mA
+       \item RESET: 42 mA
+       \item ALL: 659 mA
+       \item READ: 659 mA mA with 955 errors 
+       \item START: 1145 mA 
+     \end{itemize}
+
+     Parameters of the auxiliary board measured after connecting the module:
+
+     \begin{itemize}
+       \item $V_{clp} \ = \ 2.28 \ V$ 
+       \item $V_{dd_D} \ = \ 3.15 \ V$
+       \item $V_{dd_A} \ = \ 3.24 \ V$
+     \end{itemize}
+
+     
+     \begin{itemize}
+       \item $V_{clp} \ = \ 3.33 \ V$ 
+       \item $V_{dd_D} \ = \ 2.93 \ V$
+       \item $V_{dd_A} \ = \ 3.33 \ V$
+     \end{itemize}
+        
+    Due to the unexpected results, I've measured the voltages along the jumper cable and I've got lower values as the one measured on the auxiliary board as expected.
+
+    It is the second Aluminum Mirrored module that has a problem with $V_{clp}$ and the JTAG.
+
+ \end{document}

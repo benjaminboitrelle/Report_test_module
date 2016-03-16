@@ -1,0 +1,81 @@
+\documentclass[a4papper, 10pt]{article}
+
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+ \usepackage[normalem]{ulem}
+ \usepackage[british]{babel}
+ \usepackage{graphicx}
+ \usepackage{caption}
+ \usepackage{subcaption}
+ \usepackage{enumerate}
+ \usepackage{array}
+ \usepackage{amsmath,amssymb,mathrsfs}
+ \usepackage{url}
+ \usepackage{fullpage}
+ \usepackage[table]{xcolor}
+ \usepackage{placeins} 
+ 
+ \definecolor{light-gray}{gray}{0.85}
+ %\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+ \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % To center text in table
+
+ \title{Report: AM03 electrical validation}
+ \author{Benjamin Boitrelle}
+ \date{January 2016}
+
+ \begin{document}
+
+    \maketitle
+    
+    %tableofcontents
+
+  %\section{Alignment and bounding inspection}:
+  \section{Electrical tests}
+    \subsection{Auxiliary board}
+    
+   Some parameters of the auxiliary board are measured (without any module connected).
+   \begin{itemize}
+     \item Consumption: 379 mA
+     \item $V_{clp} \ = \ 2.10 \ V$
+     \item $V_{DD_D} \ = \ 3.33 \ V$
+     \item $V_{DD_A} \ = \ 3.24 \ V$
+   \end{itemize}
+
+     \subsection{AM03 smoke test}
+
+    First smoke test done without changing the value of  $V_{clp}$, $V_{dd_D}$ of $V_{dd_A}$:
+     \begin{itemize}
+       \item POWER ON: 608 mA
+       \item RESET: 36 mA
+       \item ALL: 36 mA
+       \item READ: 36mA mA with errors
+       \item START: 36 mA 
+     \end{itemize}
+
+     The RESET works on the module but then there is a problem of JTAG.
+     Two voltage measurements were done on the capacitors closed to the connector.
+     The first one, before reseting the module:
+
+     \begin{itemize}
+       \item $V_{clp} \ = \ 2.59 \ V$ 
+       \item $V_{dd_D} \ = \ 1.85 \ V$
+       \item $V_{dd_A} \ = \ 2.71 \ V$
+     \end{itemize}
+
+     The $V_{clp}$ is higher than it should be.
+     The $V_{clp}$ measured on the auxiliary board is still 2.1 V.
+     Also the auxiliary board is providing 3.3 V for $V_{DD_D}$ and $V_{DD_A}$, but the measurements on the capacitor close to the connector give different value.
+
+     After reseting the module, the voltage values measured on the flex are:
+     
+     \begin{itemize}
+       \item $V_{clp} \ = \ 3.33 \ V$ 
+       \item $V_{dd_D} \ = \ 2.93 \ V$
+       \item $V_{dd_A} \ = \ 3.33 \ V$
+     \end{itemize}
+        
+    Due to the unexpected results, I've measured the voltages along the jumper cable and I've got lower values as the one measured on the auxiliary board as expected.
+
+    It is the second Aluminum Mirrored module that has a problem with $V_{clp}$ and the JTAG.
+
+ \end{document}

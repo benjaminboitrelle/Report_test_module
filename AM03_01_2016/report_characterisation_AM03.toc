@@ -1,0 +1,4 @@
+\select@language {british}
+\contentsline {section}{\numberline {1}Electrical tests}{1}
+\contentsline {subsection}{\numberline {1.1}Auxiliary board}{1}
+\contentsline {subsection}{\numberline {1.2}AM03 smoke test}{1}
